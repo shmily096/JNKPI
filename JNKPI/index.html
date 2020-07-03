@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="css/BigData.css" rel="stylesheet" type="text/css" />
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+    <link href="css/index01.css" rel="stylesheet" type="text/css" />
+	<link href="css/popup.css" rel="stylesheet" type="text/css" />
+    <script src="js/jquery.js"></script>
+    <link href="js/bstable/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="js/bstable/css/bootstrap-table.css" rel="stylesheet" type="text/css" />
+    <link href="css/Security_operation.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="js/artDialog/skins/default.css" type="text/css"/>
+    <script src="js/laydate.js"></script>
+    <script src="js/Home_page.js"></script>
+    <meta charset="UTF-8">
+    <title>大数据管理平台</title>
+</head>
+<body >
+<div class="data_bodey">
+    <div class="index_nav" >
+        <ul style="height: 30px; margin-bottom: 0px;">
+            <li class="l_left total_chose_pl nav_active">汇总分析</li>
+            <li class="l_left total_chose_pl" >回访分析</li>
+            <li class="l_left total_chose_pl">责任部门及工单分析</li>
+            <li class="r_right total_chose_pl">话务员分析</li>
+            <li class="r_right total_chose_pl">12345分析</li>
+            <li class="r_right total_chose_pl">预警及热词分析</li>
+        </ul>
+		<!-- 弹出层 -->
+		<div class="popup" style="display: none;width: 82%;height: 76%;">
+		<a href="javascript:;" class="popupClose"></a>
+		<div class="summary">
+			<div class="summaryBottom">
+				<!-- <h1 style="color: #F50F35;">内容待完善</h1> -->
+				<div id="summaryPie4" class="summaryPie" style="width:1500px;height: 350px;"></div>
+			</div>
+			<div class="summaryTop">
+				<!-- <h1 style="color: #F50F35;">内容待完善</h1> -->
+				<div id="summaryPie1" class="summaryPie" style="width:540px;height: 350px;"></div>
+				<div id="summaryPie2" class="summaryPie" style="width:540px;height: 350px;"></div>
+				<div id="summaryPie3" class="summaryPie" style="width:540px;height: 350px;"></div>
+			</div>
+			
+		</div>
+		</div>
+		<!-- 弹出层End -->
+        <div class="total_chose_box" >
+            <div style="height: 32px;"></div>
+            <span class="chose_tltle">请选择年份：</span>
+            <select id="year" class="year_chose">
+				<option>2020</option>
+                <option>2021</option>
+				<option>2022</option>
+				<option>2023</option>
+				<option>2024</option>
+            </select>
+            <span class="chose_tltle">请选择月份：</span>
+			<select id="month" class="year_chose">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option selected="selected">6</option>
+				<option>7</option>
+				<option>8</option>
+				<option>9</option>
+				<option>10</option>
+				<option>11</option>
+				<option>12</option>
+            </select>
+            <button id="choseYM" class="chose_enter">确定</button>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="index_tabs" >
+        <!--汇总分析-->
+		<div class="inner" style="height: 100%;" >
+            <div class="data_left03">
+                <div class="dataAllN maginS">
+                    <div class="dataAllBorder01">
+                        <div class="dataAllBorder02">
+                            <div class="data_tit3">责任部门统计</div>
+							 <p class="data_chart" style="width: 485px;height: 370px;" id="allAly01"></p>
+                            <!-- <p class="data_chart" id="zhanbi02"></p> -->
+						
+                        </div>
+                    </div>
+                </div>
+				<div class="dataAllN maginS">
+                    <div class="dataAllBorder01">
+                        <div class="dataAllBorder02">
+                            <div class="data_tit3">服务类别统计</div>
+							 <p class="data_chart" style="width: 485px;height: 370px;" id="zhanbi02"></p>				
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="data_left04">
+				<div class="dataAllNo01">
+				    <div class="dataAllBorder01">
+				        <div class="dataAllBorder02">
+				            <div class="data_tit3">客服单量与工单量趋势</div>
+							<table class="table_data02">
+							    <tr><td class="font07">本月客服单总量</td><td class="font03" id="td1">31240</td><td class="font07">本月工单总量</td><td class="font02" id="td2">3450</td></tr>
+							    <tr><td class="font07">  同比工单总量</td><td class="font01" id="td3">184590</td><td class="font07">环比工单总量</td><td class="font01"id="td4">19870</td></tr>
+							</table>
+							<p class="data_chart" style="width: 900px;height: 340px;" id="allAly04"></p>
+							<p class="data_chart" style="width: 900px;height: 340px;" id="allAly03"></p>
+				        </div>
+				    </div>
+				</div>
+                
+            </div>
+            <div class="data_left03">
+                <div class="dataAllN maginS">
+                    <div class="dataAllBorder01">
+                        <div class="dataAllBorder02">
+                            <div class="data_tit3">信息来源统计</div>
+                            <p class="data_chart" style="width: 485px;height: 370px;" id="zhanbi03"></p>
+                        </div>
+                    </div>
+                </div>
+				<div class="dataAllN maginS">
+                    <div class="dataAllBorder01">
+                        <div class="dataAllBorder02">
+                            <div class="data_tit3">行政区域统计</div>                          
+                            <p class="data_chart" style="width: 485px;height: 370px;" id="allAly99"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<!-- 回访分析 -->
+		<div class="inner" style="display: none;" >
+            <!-- <div class="data_left01">
+                <div class="dataAll maginS">
+                    <div class="dataAllBorder01">
+                        <div class="dataAllBorder02">
+                            <div class="data_tit1">1回访分析</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dataAll">
+                    <div class="dataAllBorder01">
+                        <div class="dataAllBorder02">
+                            <div class="data_tit1">2回访分析</div>
+                            <p class="data_chart" id="Package01"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="dataAll">
+                    <div class="dataAllBorder01">
+                        <div class="dataAllBorder02">
+                            <div class="data_tit1">3回访分析</div>
+                            <p class="data_chart" id="rode01"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="data_left01">
+                <div class="dataAll maginS">
+                    <div class="dataAllBorder01">
+                        <div class="dataAllBorder02">
+                            <div class="data_tit1">4回访分析</div>
+                            <p class="data_chart" id="bookAret"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="dataAll">
+                    <div class="dataAllBorder01">
+                        <div class="dataAllBorder02">
+                            <div class="data_tit1">5回访分析</div>
+                            <p class="data_chart" id="bookBmonth"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="dataAll">
+                    <div class="dataAllBorder01">
+                        <div class="dataAllBorder02">
+                            <div class="data_tit1">6回访分析</div>
+                            <p class="data_chart" id="whearAbook"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="data_left02">
+                <div class="dataAll01">
+                    <div class="dataAllBorder01">
+                        <div class="dataAllBorder02">
+                            <div class="data_tit2">主回访分析</div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="dataAll02">
+                    <div class="dataAllBorder01">
+                        <div class="dataAllBorder02">
+                            <div class="data_tit1">7回访分析</div>
+                            <p class="data_chart" id="rodeAbook"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="data_left01">
+                <div class="dataAll maginS">
+                    <div class="dataAllBorder01">
+                        <div class="dataAllBorder02">
+                            <div class="data_tit1">8回访分析</div>
+                            <p class="data_chart" id="seaAbook01"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="dataAll">
+                    <div class="dataAllBorder01">
+                        <div class="dataAllBorder02">
+                            <div class="data_tit1">9回访分析</div>
+                            <p class="data_chart" id="actionBook"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="dataAll">
+                    <div class="dataAllBorder01">
+                        <div class="dataAllBorder02">
+                            <div class="data_tit1">10回访分析</div>
+                            <p class="data_chart" id="sperceBook01"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div> -->
+        </div>
+		<!-- 责任部门 -->
+        <div class="inner" style="display: none;">
+
+            <div class="left_cage">
+                <div class="dataAllBorder01 cage_cl" style="margin-top: 9% !important; height: 24%;">
+                    
+                </div>
+                <div class="dataAllBorder01 cage_cl" style="margin-top: 1.5% !important; height: 38%;">
+                    <div class="dataAllBorder02 video_cage">
+                        
+                    </div>
+                </div>
+                <div class="dataAllBorder01 cage_cl" style="margin-top: 1.5% !important; height: 32%; position: relative;">
+                    <div class="dataAllBorder02" style="padding: 1.2%; overflow: hidden">
+
+                        <div class="message_scroll_box">
+                            <div class="message_scroll">
+                            
+							</div>
+                            <div class="message_scroll">
+                                
+                            </div>
+                            <div class="message_scroll">
+                                
+                            </div>
+                            <div class="message_scroll">
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="scroll_tool_outbox">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="center_cage">
+                <div class="dataAllBorder01 cage_cl" style="margin-top: 3.5% !important; height: 62.7%; position: relative;">
+                    <div class="dataAllBorder02" style="position: relative; overflow: hidden;">
+                        <!--标题栏-->
+                        <div class="map_title_box" style="height: 6%">
+                            <div class="map_title_innerbox">
+                                <div class="map_title">责任部门</div>
+                            </div>
+                        </div>
+                        <div class="map" id="map"  ></div>
+                        <!--地图显示信息选择-->
+                        <div class="display_type_box display_box" style="display: none;overflow:auto">
+                            <div class="display_type_center_box">
+                                
+                            </div>
+                            <div class="display_type_funct_box">
+                                
+                            </div>
+                        </div>
+                        <!--城市选择-->
+                        <div class="city_chose_box display_box" style="display: none">
+                            <div class="display_type_center_box">
+                               
+                            </div>
+                            <div class="display_type_funct_box">
+                                <span class="display_type_funct display_type_funct_sure">确定</span>
+                            </div>
+                        </div>
+                        
+                            
+                    </div>
+                </div>
+
+                <div class="dataAllBorder01 cage_cl" style="margin-top: 0.6% !important; height: 32.1%;">
+                    <div class="dataAllBorder02" id="map_title_innerbox">
+                        <div class="map_title_box">
+                            <div class="map_title_innerbox">
+                                <div class="map_title" style="background-image: url(img/second_title.png);">责任部门分析</div>
+                            </div>
+                            <div >
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="right_cage">
+                <!--顶部切换位置-->
+                <div class="dataAllBorder01 cage_cl" style="margin-top: 9% !important; height: 24%">
+                    <div class="dataAllBorder02" id="cage_cl" >
+                        <div class="analysis"></div>
+                        
+                        <div class="depart_number_box">
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="dataAllBorder01 cage_cl check_increase" style=" margin-top: 1.5% !important;">
+                    
+                </div>   
+                    
+                <div class="dataAllBorder01 cage_cl check_decrease" style="margin-top: 1.5% !important; height: 32%; position: relative;">
+                    <div class="dataAllBorder02 over_hide" style="padding: 1.2%;">
+                        <div class="danger_contain_box">
+                            <div id="container_huan" style="height: 90%;width: 100%"></div>
+                        </div>
+                        <div class="danger_depart_box">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+		<!-- 话务员分析 -->
+        <div class="inner" style="display: none">
+            <div class="clear"></div>
+            <!-- <div class="data_left05">
+                <div class="dataAllNo02 ">
+                    <div class="dataAllBorder01">
+                        <div class="dataAllBorder02">
+                            <div class="data_tit">预警热词分析1</div>
+                            <p class="data_chart02" id="shijian01"></p>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="data_left05">
+                <div class="dataAllNo02 ">
+                    <div class="dataAllBorder01">
+                        <div class="dataAllBorder02">
+                            <div class="data_tit">预警热词分析2</div>
+                            
+                            <p class="data_chart02" id="shijian03"></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="data_left05">
+                <div class="dataAllNo02">
+                    <div class="dataAllBorder01">
+                        <div class="dataAllBorder02">
+                            <div class="data_tit">预警热词分析3</div>
+                            <p class="data_chart02" id="shijian02"></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="data_left05">
+                <div class="dataAllNo02">
+                    <div class="dataAllBorder01">
+                        <div class="dataAllBorder02">
+                            <div class="data_tit">预警热词分析4</div>
+
+                            <p class="data_chart03" id="shijian04"></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div> -->
+        </div>
+		<!-- 12345分析 -->
+        <div class="inner" style="display: none">
+            <!-- <div class="manage_left l_left">
+                <div class="manage_line1">
+                    <div class="manage_line2">
+                        <div class="manage_top_middle">
+                            
+                        </div>
+                        <div class="manage_left_top">
+                            <div class="manage_top_left l_left">
+                                <div id="container2" style="height: 90%"></div>
+                                <p>导入2</p>
+                            </div>
+                            <div class="manage_top_left l_left">
+                                <div id="container1" style="height: 90%"></div>
+                                <p>导入分析1</p>
+                            </div>
+                            <div class="manage_top_left l_left">
+                                <div id="container3" style="height:90%"></div>
+                                <p>导入分析3</p>
+                            </div>
+
+                        </div>
+                        <div class="manage_top_middle">
+                            <div id="container4" style="height: 90%"></div>
+                            <p>导入分析4</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="manage_left l_left">
+                <div class="manage_line1">
+                    <div class="manage_line2">
+                        <div class="manage_top_middle l_left">
+                            <div id="container9" style="height: 90%"></div>
+                            <p>导入分析9</p>
+                        </div>
+                        <div class="manage_top_middle l_left">
+                            <div id="container10" style="height: 90%"></div>
+                            <p>导入分析10</p>
+                        </div>
+                        <div class="manage_top_middle l_left">
+                            <div id="container11" style="height: 90%"></div>
+                            <p>导入分析11</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="manage_left l_left">
+                <div class="manage_line1">
+                    <div class="manage_line2">
+                        <div class="manage_top_middle">
+                            <div id="container12" style="height: 90%"></div>
+                            <p>导入分析12</p>
+                        </div>
+                        <div class="manage_top_middle">
+                            <div id="container6" style="height: 90%"></div>
+                            <p>导入分析6</p>
+                        </div>
+                        <div class="manage_top_middle l_left">
+                            <div id="container5" style="height: 90%"></div>
+                            <p>导入分析5</p>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+		<!-- 预警及热词分析 -->
+        <div class="inner" style="display: none;">
+            <!-- <div class="user_left l_left" style=" margin-left: 0.6%">
+                <div class="user_line1">
+                    <div class="user_line2">
+                        <div class="user_top_middle">
+                       
+                        </div>
+                        <div class="user_left_top">
+                            <div class="user_top_left l_left">
+                                <div id="userContainerSex" style="height: 90%"></div>
+                                <p>预警及热词分析1</p>
+                            </div>
+                            <div class="user_top_left l_left">
+                                <div id="userContainerManage" style="height: 90%"></div>
+                                <p>预警及热词分析2</p>
+                            </div>
+                            <div class="user_top_left l_left">
+                                <div id="userContainerAge" style="height:90%"></div>
+                                <p>预警及热词分析3</p>
+                            </div>
+
+                        </div>
+                        <div class="user_top_middle">
+                            <div id="userContainerAttendance" style="height: 90%"></div>
+                            <p>预警及热词分析4</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="user_left l_left" style=" margin-left: 0.6%">
+                <div class="user_line1">
+                    <div class="user_line2">
+                        <div class="user_top_middle l_left">
+                            <div id="userContainerPersonal" style="height: 90%"></div>
+                            <p>预警及热词分析</p>
+                        </div>
+                        <div class="user_top_middle l_left">
+                            <div id="userContainerFlow" style="height: 90%"></div>
+                            <p>xxx分析</p>
+                        </div>
+                        <div class="user_top_middle l_left">
+                            <div id="userContainerIllegal" style="height: 90%"></div>
+                            <p>xxxx分析</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="user_left l_left" style=" margin-left: 0.6%">
+                <div class="user_line1">
+                    <div class="user_line2">
+                        <div class="user_top_middle">
+                            <div id="userContainerComplaint" style="height: 90%"></div>
+                            <p>xxxx情况</p>
+                        </div>
+                        <div class="user_top_middle">
+                            <div id="userContainerPrize" style="height: 90%"></div>
+                            <p>xxx分析</p>
+                        </div>
+                        <div class="user_top_middle l_left">
+                            <div class="user_right_left l_left">
+                                <div id="userContainerReason" style="height: 90%"></div>
+                                <p>xxx原因分析</p>
+                            </div>
+                            <div class="user_right_left l_left">
+                                <div id="userContainerHandle" style="height: 90%"></div>
+                                <p>故障处理情况</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+
+</div>
+
+<script src="js/echarts-all.js"></script>
+<script src="js/index.js"></script>
+<script src="js/bstable/js/bootstrap.min.js"></script>
+<script src="js/bstable/js/bootstrap-table.js"></script>
+<script type="text/javascript" src="js/jquery.pagination.js"></script>
+<script src="js/bstable/js/bootstrap-table-zh-CN.min.js"></script>
+
+<script src="js/popup.js"></script>
+<script src="js/Home_page.js"></script>
+<script src="js/artDialog/artDialog.js"></script>
+<script src="js/artDialog/plugins/iframeTools.source.js"></script>
+<script>
+    var number;
+    $(function() {
+        if (window.screen.height <= 768) {
+            number = 4;
+        } else if (window.screen.height > 768 && window.screen.height <= 900) {
+            number = 6
+        } else if (window.screen.height > 1080) {
+            number = 8
+        }
+    });
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

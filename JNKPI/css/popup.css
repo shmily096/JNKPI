@@ -1,0 +1,75 @@
+.popup{
+	width: 0;
+	height: 0;
+	background: #061f3e;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 999;
+	border-radius: 8px;
+	display: none;
+	-webkit-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	-o-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+}
+.popup .popupClose{
+	display: block;
+	width: 44px;
+	height: 44px;
+	background: url(../images/s_ico3.png);
+	background-size: 100 100%;
+	position: absolute;
+	top: -22px;
+	right: -22px;
+	display: none;
+	transition: 0.3s;
+}
+.popup .popupClose:hover{
+	transform: rotate(180deg);
+}
+.summary{
+	width: 96%;
+	height: 96%;
+	margin: 2% auto;
+	display: none;
+}
+.summary .summaryTop{
+	height: 50%;
+}
+.summary .summaryBottom{
+	height: 50%;
+}
+/* .summaryTit{
+	height: 12%;
+	text-align: center;
+}
+.summaryTit img{
+	height: 100%;
+	max-height: 68px;
+	width: auto;
+} */
+.summaryPie{
+	height: 50%;
+	float: left;
+	width: 33%;
+}
+/* .summaryBar{
+	height: 100%;
+	float: left;
+	width: 30%;
+	margin-right: 2%;
+}
+#summaryBar{
+	height: 80%;
+} */
+
+/* .summaryLine{
+	float: left;
+	width: 60%;
+	height: 100%;
+}
+#summaryLine{
+	height: 80%;
+} */
